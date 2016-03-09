@@ -1,0 +1,207 @@
+<template name="bonus">
+<nav class="navbar navbar-default" id="bonusnav">
+<form >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Editing: {{BonusEditedDay}} </a>
+    </div>
+    <div class="input-wrap-hor ">
+    	<div class="input-title"> From </div>
+    	<input class="input timetype" id="shift1" type="time" placeholder="">
+	</div>
+	<div class="input-wrap-hor " >
+    	<div class="input-title">To </div>
+    	<input class="input timetype" id="shift2" type="time" placeholder=" End of shift (hh:mm)">
+    </div>
+    <div class="input-wrap-hor">	
+    	<div class="input-title">Time Off </div>
+    	<input class="input" id="timeoff" type="text" placeholder=" in minutes (optional)">
+    </div>
+    <div class="input-wrap-hor">  
+      <div class="input-title">Indirect </div>
+      <input class="input" id="indirect" type="text" placeholder=" in minutes (optional)">
+    </div>
+    <button id="Savebutt" type="button" class="btn btn-primary" >Save</button>
+   </div>
+</form>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-md-2">
+   <nav id="myScrollspy" >
+      <h3>Browse the forms</h3>
+      <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
+        {{#each warehouse}}
+          {{>Warehouselist}}
+        {{/each}}
+        
+      </ul>
+    </nav>
+   </div>
+    <div id="placeholder" class="col-md-8">
+     <div class="panel-group">
+     <form id="Bonus">
+      {{#each DisplayForm}}
+        {{> Template.dynamic template=this}}
+     {{/each}}
+     </form>
+     </div>
+    </div>
+    <div class="col-md-2">
+      <div id="YourForms">
+      <h3>Recently used forms</h3>
+      {{#each Userform}}
+        {{>formlist}}
+      {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+</template>
+<template name="formlist">
+  <div class="myform">
+    <button type="button" class="FormButtons btn btn-primary">{{FormName}}<button type="button" class="close close-recent" style="margin-left:30px" >&times;</button></button>
+  </div>
+</template>
+<template name="Warehouselist">
+   <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{warehouse}} <span class="caret"></span></a>
+    <ul class="dropdown-menu">     
+    {{#each Forms}}
+      {{>WarehouseListLI }}
+    {{/each}}                
+    </ul>
+  </li>
+</template>
+<template name="WarehouseListLI">
+   <li class="addform"><a href="#">{{FormName}}</a></li>
+</template>
+<template name="SW - Picking" >
+  <div class="panel panel-primary BonusForm">
+    <div class="panel-heading">SW - Picking <button type="button" class="close close-form" style="float:right" >&times;</button></div>
+      <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="listnumber">1</div> Put the amount of items from all your picks. 
+        </div>
+        <div class="col-md-6">
+          <div class="listnumber">2</div> Put the amount of alleys from all your picks. 
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">1</div>
+            <label for="items">Items:</label>
+            <input type="text" class="form-control" id="pwd" name="SWpickI">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="Sum">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWpickIS" >
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">2</div>
+            <label for="pwd">Alleys:</label>
+            <input type="text" class="form-control" id="pwd"  name="SWpickA">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="pwd">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWpickAS" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+        <br>Amounts can be added by putting a coma in between them E.g. 100,200,100 is the same as writing 400.
+      </div>
+    </div>
+  </div>
+  </div>
+</template>
+<template  name="SW - Packing">
+  <div class="BonusForm panel panel-default">
+    <div class="panel-heading">SW - Packing</div>
+    <div class="panel-body"></div>
+  </div>
+</template>
+<template  name="SW - Putaway">
+  <div class="BonusForm panel panel-default">
+    <div class="panel-heading">SW - Putaway</div>
+    <div class="panel-body"></div>
+  </div>
+</template>
+<template  name="SW - Returns">
+  <div class="BonusForm panel panel-default">
+    <div class="panel-heading">SW - Returns</div>
+    <div class="panel-body"></div>
+  </div>
+</template>
+<template  name="SW - F2H">
+  <div class="BonusForm panel panel-default">
+    <div class="panel-heading">SW - F2H</div>
+    <div class="panel-body"></div>
+  </div>
+</template>
+<template  name="SW - NDTS">
+  <div class="BonusForm panel panel-primary">
+    <div class="panel-heading">SW - NDTS <button type="button" class="close close-form" style="float:right" >&times;</button></div>
+    <div class="panel-body">
+    	 <div class="row">
+        <div class="col-md-6">
+          <div class="listnumber">1</div> Put the amount of parcels that you have sorted.
+        </div>
+        <div class="col-md-6">
+          <div class="listnumber">2</div> Put the amount of Boxsets that you have packed.
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">1</div>
+            <label for="items">Parcels:</label>
+            <input type="text" class="form-control" name="SWndtsP">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="Sum">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWndtsPS" >
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">2</div>
+            <label for="pwd">Boxsets:</label>
+            <input type="text" class="form-control" name="SWndtsB">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="pwd">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWndtsBS" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+      	<br>The rates for boxset packing and boxset despatch has been added together so you don't need to worry about it.
+        	<br>Amounts can be added by putting a coma in between them E.g. 100,200,100 is the same as writing 400.
+      </div>
+    </div>
+    </div>
+  </div>
+</template>
+<template  name="SW - mm">
+  <div class="BonusForm panel panel-default">
+    <div class="panel-heading">SW - Picking</div>
+    <div class="panel-body"></div>
+  </div>
+</template>

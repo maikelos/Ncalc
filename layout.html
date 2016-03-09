@@ -1,0 +1,34 @@
+<template name="layout">
+<body id="layout">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Ncalc</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li class="{{isActive 'home'}}"><a href="{{ pathFor 'home' }}">Home</a></li>
+          {{#if currentUser}}
+          <li class="{{isActive 'calendar'}}"><a href="{{pathFor 'calendar'}}">Calendar</a></li>
+          <li class="{{isActive 'bonus'}}"><a href="{{pathFor 'bonus'}}">Bonus</a></li>
+          {{/if}}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+           <li><a href="#"><span class="glyphicon glyphicon-user"></span> Logged in as {{>username}}</a></li>
+          <li  id="logout"><a href="#"><span class="glyphicon glyphicon-log-out logout"></span> Logout</a></li>
+          {{else}}
+          <li class="{{isActive 'register'}}"><a href="{{pathFor 'register'}}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+          <li class="{{isActive 'login'}}"><a href="{{pathFor 'login'}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {{>yield}} 
+</body> 
+</template>
+
+<template name="username">
+   {{user}}
+</template>
