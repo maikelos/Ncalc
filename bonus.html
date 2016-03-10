@@ -128,7 +128,50 @@
 <template  name="SW - Packing">
   <div class="BonusForm panel panel-default">
     <div class="panel-heading">SW - Packing</div>
-    <div class="panel-body"></div>
+    <div class="panel-body">
+    	<div class="row">
+        <div class="col-md-6">
+          <div class="listnumber">1</div> Put the amount of Multi Parcels packed.
+        </div>
+        <div class="col-md-6">
+          <div class="listnumber">2</div> Put the amount of Single Parcels packed. 
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">1</div>
+            <label for="items">Multi:</label>
+            <input type="text" class="form-control" id="pwd" name="SWpackM">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="Sum">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWpackMS" >
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="listnumber">2</div>
+            <label for="pwd">Singles:</label>
+            <input type="text" class="form-control" id="pwd"  name="SWpackS">
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-group">
+            <label for="pwd">Sum</label>
+            <input class="sumamount" tabindex="999" name="SWpackSS" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-12">
+        <br>Amounts can be added by putting a coma in between them E.g. 100,200,100 is the same as writing 400.
+      </div>
+    </div>
+    </div>
   </div>
 </template>
 <template  name="SW - Putaway">

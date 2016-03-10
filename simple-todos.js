@@ -214,7 +214,9 @@ if (Meteor.isClient) {
             break;
         case "Flex Down":
             calendarEvent.color="#17A8FF";
-            break;        
+            break;  
+        case "Holiday":
+            calendarEvent.color="#07DB00";      
         }
         //console.log(Session.get('IsEvent'));
         //console.log(calendarEvent);
