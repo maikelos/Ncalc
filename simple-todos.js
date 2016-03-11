@@ -216,7 +216,8 @@ if (Meteor.isClient) {
             calendarEvent.color="#17A8FF";
             break;  
         case "Holiday":
-            calendarEvent.color="#07DB00";      
+            calendarEvent.color="#07DB00";
+            break;      
         }
         //console.log(Session.get('IsEvent'));
         //console.log(calendarEvent);
